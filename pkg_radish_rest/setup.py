@@ -7,7 +7,7 @@ import os
 
 from setuptools import setup, find_packages
 
-pkg_name = 'radish_ext_be'
+pkg_name = 'radish_rest'
 
 def _packages():
     packages = [f'{pkg_name}.{sub_pkg_name}' for sub_pkg_name in
