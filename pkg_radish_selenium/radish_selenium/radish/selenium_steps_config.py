@@ -5,9 +5,9 @@
 
 import unicodedata
 
-from pkg_radish_ext.radish_ext.radish.step_config import StepConfig
-from pkg_radish_selenium.radish_selenium.radish.selenium_test_data import SeleniumTestData
-from pkg_radish_selenium.radish_selenium.sdk.selenium_driver_factory import SeleniumDriverFactory
+from radish_ext.radish.step_config import StepConfig
+from radish_selenium.radish.selenium_test_data import SeleniumTestData
+from radish_selenium.sdk.selenium_driver_factory import SeleniumDriverFactory
 from radish_selenium.sdk.selenium_driver_config import SeleniumDriverConfig
 
 

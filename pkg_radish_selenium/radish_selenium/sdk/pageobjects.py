@@ -12,7 +12,7 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
-from pkg_radish_ext.radish_ext.sdk.l import Logging
+from radish_ext.sdk.l import Logging
 
 
 class CSFPageObject(PageObject):

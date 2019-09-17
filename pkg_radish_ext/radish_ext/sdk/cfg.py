@@ -8,8 +8,8 @@ import os
 import jinja2
 import yaml
 
-from pkg_radish_ext.radish_ext import get_radish_ext_etc_dir
-from pkg_radish_ext.radish_ext.sdk.l import Logging
+from radish_ext import get_radish_ext_etc_dir
+from radish_ext.sdk.l import Logging
 from radish_ext.sdk.config import Config
 
 

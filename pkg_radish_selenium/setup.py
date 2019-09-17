@@ -28,7 +28,7 @@ setup(name=pkg_name,
       include_package_data=True,
       install_requires=['selenium',
                         'page_objects',
-                        'radish-ext-config',
+                        'radish-ext',
                         'retry'
                         ],
       zip_safe=False,

@@ -7,7 +7,7 @@ import os
 from abc import ABCMeta
 from urllib.parse import urlparse, urlunparse
 
-from pkg_radish_ext.radish_ext.sdk.cfg import CfgComponent
+from radish_ext.sdk.cfg import CfgComponent
 from radish_ext.sdk.config import Config
 from requests import Session
 from requests.adapters import HTTPAdapter

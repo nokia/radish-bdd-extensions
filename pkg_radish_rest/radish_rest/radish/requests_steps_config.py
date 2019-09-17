@@ -3,7 +3,7 @@
 # Licensed under the BSD 3 Clause license
 # SPDX-License-Identifier: BSD-3-Clause
 
-from pkg_radish_ext.radish_ext.radish.step_config import StepConfig
+from radish_ext.radish.step_config import StepConfig
 from radish_rest.radish.requests_test_data import RequestTestData
 from radish_rest.sdk.rest import RestConfig, RestClient, SimpleRestConfig
 
