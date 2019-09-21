@@ -5,7 +5,7 @@
 
 from abc import abstractmethod, ABCMeta
 
-from pkg_radish_ext.radish_ext.sdk.l import Logging
+from radish_ext.sdk.l import Logging
 
 
 class Config(object, metaclass=ABCMeta):

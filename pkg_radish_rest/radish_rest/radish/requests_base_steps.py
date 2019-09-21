@@ -5,7 +5,7 @@
 
 from nose.tools import assert_equals, assert_in, assert_equal
 
-from pkg_radish_ext.radish_ext.sdk.l import Logging
+from radish_ext.sdk.l import Logging
 from radish_rest.radish.requests_steps_config import get_requests_config
 from radish_rest.radish.requests_tools import RequestsBaseTools
 

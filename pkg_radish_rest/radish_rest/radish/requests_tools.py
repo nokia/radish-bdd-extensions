@@ -3,7 +3,7 @@
 # Licensed under the BSD 3 Clause license
 # SPDX-License-Identifier: BSD-3-Clause
 
-from pkg_radish_ext.radish_ext.sdk.l import Logging
+from radish_ext.sdk.l import Logging
 from radish_ext.sdk.helpers import json_pretty_dump
 
 
