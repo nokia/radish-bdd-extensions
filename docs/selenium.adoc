@@ -1,0 +1,35 @@
+== radish_selenium
+
+:exampledir: ../examples/selenium_test_example
+
+=== Selenium config file
+The selenium configuration by default is provided in Selenium section.
+
+.ui_conf.yaml from example
+----
+include::{exampledir}/open_url/ui_conf.yaml[]
+----
+
+.type attribute
+* local
+** create browser driver based on *Selenium.capabilities.browserName*
+* remote
+** create remote WebDriver based on *Selenium.url* attribute
+** with remote WebDriver you can easily use to e.g. link:https://github.com/aerokube/selenoid[selenoid]
+*** add additional attributes in *Selenium.capabilities* section (version, enableVNC, enableVideo ..)
+* testcontainers
+** created driver with link:https://github.com/testcontainers/testcontainers-python[testcontainers-python]
+
+.capabilities section
+* provide link:https://selenium-python.readthedocs.io/api.html#desired-capabilities[desired capabilities] for webdriver
+
+=== Test data from yaml in feature files
+Other sections e.g. *Nokia* can be use to provide test data
+
+----
+When open url "${cfg.Nokia.url}" in a web browser
+----
+
+In above example the ${cfg.Nokia.url} will be replaced during execution with value form configuration
+
+In our example it will be the *https://nokia.com*

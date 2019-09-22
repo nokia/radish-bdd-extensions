@@ -60,7 +60,7 @@ class SeleniumBaseSteps:
         open_web_browser(step)
         stc_selenium = get_selenium_config(step.context)
         url = stc_selenium.test_data.replace_test_data(url)
-        assert isinstance(stc_selenium.driver, WebDriver)
+        assert isinstance(stc_selenium.driver, WebDriver), f'{stc_selenium.driver} is not supported Driver'
         stc_selenium.driver.get(url)
 
     def page_title_is(self, step, title):

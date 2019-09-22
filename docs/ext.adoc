@@ -1,0 +1,9 @@
+== radish_ext
+
+This package provide base classes for other extensions
+
+* enable test configuration from yaml files
+* test data replacement from feature files
+* provide logging mechanism
+** the logging configuration is provided in *radish_ext/etc/ll.conf*
+** with radish *--cucumber-json* option logged data are attached to cucumber json report

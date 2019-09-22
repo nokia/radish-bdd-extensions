@@ -1,0 +1,8 @@
+= Radish bdd extensions
+:toc:
+
+include::docs/ext.adoc[]
+
+include::docs/rest.adoc[]
+
+include::docs/selenium.adoc[]

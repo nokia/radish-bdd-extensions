@@ -7,6 +7,7 @@ from copy import deepcopy
 
 from selenium import webdriver
 from selenium.webdriver.remote.webdriver import WebDriver
+from testcontainers.selenium import BrowserWebDriverContainer
 
 
 class SeleniumDriverFactory(object):
@@ -40,14 +41,30 @@ class SeleniumDriverFactory(object):
         return driver
 
     @classmethod
-    def get_driver(cls, config):
+    def get_testcontainers_driver(cls, config):
         """
 
         :type config: radish_ext.sdk.ui.selenium_driver_config.SeleniumDriverConfig
         :rtype: selenium.webdriver.remote.webdriver.WebDriver
         """
-        if config.url:
+        container = BrowserWebDriverContainer(capabilities=config.capabilities)
+        container.start()
+        driver = container.get_driver()
+        return driver
+
+    @classmethod
+    def get_driver(cls, config):
+        """
+
+        :type config: radish_selenium.sdk.selenium_driver_config.SeleniumDriverConfig
+        :rtype: selenium.webdriver.remote.webdriver.WebDriver
+        """
+        if config.type == 'remote':
             return cls.get_remote_driver(config)
-        else:
+        elif config.type == 'testcontainers':
+            return cls.get_testcontainers_driver(config)
+        elif config.type == 'local':
             return cls.get_local_driver(config)
+        else:
+            raise NotImplementedError(f'{config.type} is not supported driver type')
 
