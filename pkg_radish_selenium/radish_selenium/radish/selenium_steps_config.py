@@ -30,10 +30,7 @@ class SeleniumStepConfig(StepConfig):
         if isinstance(page_source, bytes):
             page_source = page_source.decode('utf-8')
         page_source = unicodedata.normalize('NFKD', page_source)
-        data_str = page_source.encode('ascii', 'ignore')
-        if data_str != page_source:
-            self.log.warning('Skipping unicode characters - to allow html attachment in results')
-        step.embed(data=data_str,
+        step.embed(data=page_source,
                    mime_type='text/html',
                    encode_data_to_base64=True)
 

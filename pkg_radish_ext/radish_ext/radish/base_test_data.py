@@ -10,7 +10,9 @@ class TestDataBase(object):
 
     def __init__(self, cfg) -> None:
         super().__init__()
-        self.data = {'cfg': cfg}
+        self.data = {'cfg': cfg,
+                     'generate': {}
+                     }
         self.log = Logging.get_object_logger(self)
 
     def replace_test_data(self, template, **kwargs):

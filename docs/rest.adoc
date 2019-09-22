@@ -1,14 +1,11 @@
 == radish_rest
-
-:exampledir: ../examples/rest_test_example
-
 === REST config file
-
 The selenium configuration by default is provided in Selenium section.
 
 .rest_conf.yaml from example
 ----
-include::{exampledir}/get_request/rest_conf.yaml[]
+Swagger:
+  url: https://petstore.swagger.io/v2/pet
 ----
 
 config file data  e.g. *Swagger.url* can be use to provide test data
@@ -20,7 +17,7 @@ When request "r1" is sent to url "${cfg.Swagger.url}/findByStatus?status=availab
 
 In above example the ${cfg.Swagger.url} will be replaced during execution with value form configuration
 
-In our example it will be the *https://petstore.swagger.io/v2/pet*
+* it will be the *https://petstore.swagger.io/v2/pet*
 
 === REST client
 You can also simply use *RestClient* based on rest_config.yaml

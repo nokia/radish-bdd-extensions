@@ -14,6 +14,7 @@ class SeleniumDriverFactory(object):
     """
     Driver factory for remote WebDriver
     """
+
     @classmethod
     def get_local_driver(cls, config):
         """
@@ -28,7 +29,6 @@ class SeleniumDriverFactory(object):
                                'ie': webdriver.Ie, 'internetexplorer': webdriver.Ie}
         driver = registered_browsers[browser_name](desired_capabilities=desired_capabilities)
         return driver
-
 
     @classmethod
     def get_remote_driver(cls, config):
@@ -67,4 +67,3 @@ class SeleniumDriverFactory(object):
             return cls.get_local_driver(config)
         else:
             raise NotImplementedError(f'{config.type} is not supported driver type')
-
