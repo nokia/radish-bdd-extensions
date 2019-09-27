@@ -2,7 +2,7 @@
 
 # Licensed under the BSD 3 Clause license
 # SPDX-License-Identifier: BSD-3-Clause
-
+from radish_ext.radish.base_test_data import TestDataBase
 from radish_ext.sdk.l import Logging
 
 
@@ -20,6 +20,7 @@ class StepConfig(object):
         self.cfg = context.cfg
         setattr(self.context, 'stc_%s' % self.__class__.__name__, self)
         self.log = Logging.get_object_logger(self)
+        self.test_data = TestDataBase(self.cfg)
 
     @classmethod
     def get_instance(cls, context):
@@ -54,3 +55,9 @@ class StepConfig(object):
                 assert isinstance(step_config_instance, cls)
                 instances.append(step_config_instance)
         return instances
+
+
+def iter_all_context_step_configs(context):
+    for attr in dir(context):
+        if attr.startswith('stc'):
+            yield getattr(context, attr)

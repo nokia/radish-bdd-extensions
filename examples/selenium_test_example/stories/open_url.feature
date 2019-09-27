@@ -10,7 +10,7 @@ Feature: Examples for radish_selenium
   @test_sel1
   Scenario: radish_selenium open url
     When open url "https://nokia.com" in a web browser
-    Then page title contains "Nokia"
+    Then page title should contain "Nokia"
 
   @auto
   @test_sel2
@@ -18,4 +18,4 @@ Feature: Examples for radish_selenium
 #     The url parameter can be replaced based on user config yaml
 #     the cfg contains section Nokia with url attribute
     When open url "${cfg.Nokia.url}" in a web browser
-    Then page title contains "Nokia"
+    Then page title should contain "Nokia"

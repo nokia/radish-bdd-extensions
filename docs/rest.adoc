@@ -1,0 +1,31 @@
+== radish_rest
+=== REST config file
+The selenium configuration by default is provided in Selenium section.
+
+.rest_conf.yaml from example
+----
+Swagger:
+  url: https://petstore.swagger.io/v2/pet
+----
+
+config file data  e.g. *Swagger.url* can be use to provide test data
+
+=== Test data from yaml in feature files
+----
+When request "r1" is sent to url "${cfg.Swagger.url}/findByStatus?status=available" by a http client with "GET" method
+----
+
+In above example the ${cfg.Swagger.url} will be replaced during execution with value form configuration
+
+* it will be the *https://petstore.swagger.io/v2/pet*
+
+=== REST client
+You can also simply use *RestClient* based on rest_config.yaml
+
+[source,python]
+----
+cfg = cfg_from_file('rest_conf.yaml')
+rest_config = RestConfigFromCfg()
+rest_config.set_properties(cfg=cfg, section='Swagger')
+self.client = RestClient(rest_config)
+----

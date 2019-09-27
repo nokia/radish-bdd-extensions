@@ -29,7 +29,8 @@ setup(name=pkg_name,
       install_requires=['selenium',
                         'page_objects',
                         'radish-ext',
-                        'retry'
+                        'retry',
+                        'testcontainers',
                         ],
       zip_safe=False,
       license='BSD 3-Clause License'

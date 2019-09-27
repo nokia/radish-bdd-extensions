@@ -7,6 +7,7 @@ from radish.main import main
 from radish_ext import get_radish_ext_dir
 from radish_ext.sdk.helpers import get_cucumber_json_report_name, json_pretty_dump
 from radish_selenium import get_radish_selenium_dir
+
 from selenium_test_example.open_url.ff_location import FeatureFilesLocation
 
 if __name__ == "__main__":

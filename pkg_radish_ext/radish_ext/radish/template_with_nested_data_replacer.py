@@ -149,8 +149,8 @@ class TemplateForNestedDict(Template):
                              self.pattern)
 
         output = self.pattern.sub(convert, self.template)
-        self.log.info("IN : {template}".format(template=self.template))
-        self.log.info("OUT: {output}".format(**locals()))
+        if self.template != output:
+            self.log.info(f"IN : {self.template} OUT: {output}")
         return output
 
 

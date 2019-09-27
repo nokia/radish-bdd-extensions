@@ -11,6 +11,17 @@ class SeleniumDriverConfig(Config):
         super(SeleniumDriverConfig, self).__init__()
         self.capabilities = None
         self.url = None
+        self._type = None
+
+    @property
+    def type(self):
+        if self._type:
+            return self._type
+        elif self.url:
+            return 'remote'
+        else:
+            return 'local'
+
 
     def set_properties(self, cfg, section):
         """
@@ -35,4 +46,5 @@ class SeleniumDriverConfig(Config):
         self.log.info(selenium_cfg)
         self.url = selenium_cfg.get('url')
         self.capabilities = selenium_cfg.get('capabilities')
+        self._type = selenium_cfg.get('type')
         return self

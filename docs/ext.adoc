@@ -1,0 +1,13 @@
+== radish_ext
+
+This package provide base classes for other extensions
+
+* enable test configuration from yaml files
+* test data replacement from feature files
+** steps class decorator ext_steps_replace_from_test_data
+*** Will replace every *${cfg.section.key}* with proper values
+*** Will generate data for *${generate.data_key}*
+*** repeat of *${generate.data_key}* to reuse value generated in previous step
+* provide logging mechanism
+** the logging configuration is provided in *radish_ext/etc/ll.conf*
+** with radish *--cucumber-json* option logged data are attached to cucumber json report

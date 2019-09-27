@@ -7,6 +7,7 @@ Nokia:
   url: https://nokia.com
 
 Selenium:
+  type: remote  #local, testcontainers
   url: http://localhost:4444/wd/hub
   capabilities:
     browserName: chrome

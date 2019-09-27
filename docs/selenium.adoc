@@ -1,0 +1,61 @@
+== radish_selenium
+
+:exampledir: ../examples/selenium_test_example
+
+=== Selenium config file
+The selenium configuration by default is provided in Selenium section.
+
+.ui_conf.yaml from example
+----
+Nokia:
+  url: https://nokia.com
+
+Selenium:
+  type: remote  #local, testcontainers
+  url: http://localhost:4444/wd/hub
+  capabilities:
+    browserName: chrome
+#    browserName: firefox
+#    version: "65.0"
+#    enableVNC: True
+#    enableVideo: False
+#    proxy:
+#      proxyType: 'MANUAL'
+#      sslProxy: 'proxy.host.net:8000'
+#      httpProxy: 'proxy.host.nets:8000'
+----
+
+.type attribute
+* local
+** create browser driver based on *Selenium.capabilities.browserName*
+* remote
+** create remote WebDriver based on *Selenium.url* attribute
+** with remote WebDriver you can easily use to e.g. link:https://github.com/aerokube/selenoid[selenoid]
+*** add additional attributes in *Selenium.capabilities* section (version, enableVNC, enableVideo ..)
+* testcontainers
+** created driver with link:https://github.com/testcontainers/testcontainers-python[testcontainers-python]
+
+.capabilities section
+* provide link:https://selenium-python.readthedocs.io/api.html#desired-capabilities[desired capabilities] for webdriver
+
+=== Test data from yaml in feature files
+Other sections e.g. *Nokia* can be use to provide test data
+
+----
+When open url "${cfg.Nokia.url}" in a web browser
+----
+
+In above example the ${cfg.Nokia.url} will be replaced during execution with value form configuration
+
+In our example it will be the *https://nokia.com*
+
+=== Generate test data
+
+----
+ When User input text "${generate.test_user}" in "Username" field
+ And User input text "test_password" in "password" field
+ And User input text "${generate.test_user}@test.pl" in "email" field
+----
+
+First occurrence of ${*generate*.test_user} generate and create new test data entry
+Next occurrence of *${generate.test_user}* read/reuse generated test data value from previous data
