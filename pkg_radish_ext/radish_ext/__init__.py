@@ -16,6 +16,10 @@ def get_radish_ext_etc_dir():
     return os.path.join(get_radish_ext_dir(), 'etc')
 
 
+def get_etc_dir():
+    return get_radish_ext_etc_dir()
+
+
 log_conf = 'll.conf'
 if os.path.exists(log_conf):
     log_config_path = log_conf

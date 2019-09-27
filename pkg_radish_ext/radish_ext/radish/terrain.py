@@ -4,13 +4,13 @@
 # SPDX-License-Identifier: BSD-3-Clause
 
 import logging
-import unicodedata
-from io import StringIO
 from copy import deepcopy
+from io import StringIO
 
+from radish import world
 from radish.hookregistry import before, after
-
 from radish.stepmodel import Step
+from radish_ext.sdk.cfg import CfgComponent, CfgConfig
 
 
 def get_my_loggers():
@@ -55,6 +55,24 @@ def remove_log_string_io_handler(context):
 
 # @before.each_scenario
 # def before_each_scenario(scenario):
+
+@before.all
+def before_all(features, marker):
+    if 'cfg' in world.config.user_data:
+        config_dirs = []
+        if 'package' in world.config.user_data:
+            try:
+                package = __import__(world.config.user_data['package'])
+                if hasattr(package, 'get_etc_dir'):
+                    config_dirs.append(package.get_etc_dir())
+            except Exception as e:
+                print(f'Error: {e}')
+        cfg = CfgComponent(CfgConfig().set_properties(world.config.user_data['cfg'], None, config_dirs))
+    else:
+        cfg = CfgComponent(CfgConfig())
+    for feature in features:
+        feature.context.cfg = deepcopy(cfg.cfg)
+
 
 @before.each_scenario
 def before_each_scenario(scenario):

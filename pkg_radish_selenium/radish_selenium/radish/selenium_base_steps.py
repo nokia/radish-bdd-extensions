@@ -2,14 +2,12 @@
 
 # Licensed under the BSD 3 Clause license
 # SPDX-License-Identifier: BSD-3-Clause
-import time
 
 from nose.tools import assert_equal, assert_in
 from radish.stepmodel import Step
 from radish_ext.radish.steps_decorator import ext_steps_replace_from_test_data
 from radish_ext.sdk.l import Logging
 from radish_selenium.radish.selenium_steps_config import get_selenium_config
-from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as ec
@@ -45,6 +43,16 @@ def attach_page_source_on_failure(step):
         stc_selenium.attach_driver_page_source_to_test_report(step, stc_selenium.driver)
     except:
         stc_selenium.log.exception('Getting page source error')
+
+
+def attach_console_log_on_failure(step):
+    if step.state is not Step.State.FAILED:
+        return
+    stc_selenium = get_selenium_config(step.context)
+    try:
+        stc_selenium.attach_driver_console_log_to_test_report(step, stc_selenium.driver)
+    except:
+        stc_selenium.log.exception('Getting console log error')
 
 
 def close_web_browser(scenario):

@@ -7,8 +7,8 @@ import unicodedata
 
 from radish_ext.radish.step_config import StepConfig
 from radish_selenium.radish.selenium_test_data import SeleniumTestData
-from radish_selenium.sdk.selenium_driver_factory import SeleniumDriverFactory
 from radish_selenium.sdk.selenium_driver_config import SeleniumDriverConfig
+from radish_selenium.sdk.selenium_driver_factory import SeleniumDriverFactory
 
 
 class SeleniumStepConfig(StepConfig):
@@ -42,6 +42,20 @@ class SeleniumStepConfig(StepConfig):
                 return
             driver = self.driver
         self.attach_page_source_to_test_report(step=step, page_source=driver.page_source)
+
+    def attach_driver_console_log_to_test_report(self, step, driver=None):
+        self.log.debug(('Attaching console log to tests report'))
+        if driver is None:
+            if self.driver is None:
+                self.log.debug('Driver is not opened - can not get console logs')
+                return
+            driver = self.driver
+        console_logs = []
+        for entry in driver.get_log('browser'):
+            console_logs.append(str(entry))
+        step.embed(data='\n'.join(console_logs),
+                   encode_data_to_base64=True)
+
 
     def open_browser_if_not_opened(self):
         if self.driver:
