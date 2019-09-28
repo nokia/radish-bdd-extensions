@@ -177,11 +177,11 @@ class RestClient(object):
 
     @staticmethod
     def is_2xx_ok(status):
-        return status / 100 == 2
+        return int(status / 100) == 2
 
     @staticmethod
     def is_3xx_ok(status):
-        return status / 100 == 3
+        return int(status / 100) == 3
 
     def check_status(self, response, is_ok_method='is_2xx_ok'):
         if is_ok_method is None:
